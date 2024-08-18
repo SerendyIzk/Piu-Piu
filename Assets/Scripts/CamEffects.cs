@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CamEffects : MonoBehaviour
 {
+    [SerializeField] private GroundedController _groundedController;
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private Camera _camera;
     [SerializeField] private float _maxWiggleSpeed;
     [SerializeField] private float _zRotationOffset;
-    [SerializeField] private float _yPositionOffset; //???
     private int _offsetDirection;
     private bool _stepEffectActivated = false;
     private float _wiggleSpeed;
@@ -27,10 +27,10 @@ public class CamEffects : MonoBehaviour
 
     private void StepEffectManager() {
         Vector3 camRotation = _camera.transform.localEulerAngles;
-        if (!_stepEffectActivated && _playerMovement.Speed > 0) { DeterminationOffsetDirection();
+        if (!_stepEffectActivated && _playerMovement.Speed > 0 && _groundedController.IsGrounded) { DeterminationOffsetDirection();
                                                                   StartCoroutine(nameof(StepEffect));
                                                                   _stepEffectActivated = true; }
-        if (_stepEffectActivated && _playerMovement.Speed <= 0) { StopCoroutine(nameof(StepEffect));
+        if (_stepEffectActivated && _playerMovement.Speed <= 0 || !_groundedController.IsGrounded) { StopCoroutine(nameof(StepEffect));
                                                                   _camera.transform.localEulerAngles = new Vector3(camRotation.x, camRotation.y, 0f);
                                                                   _stepEffectActivated = false; } }
 
