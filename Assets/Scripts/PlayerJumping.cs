@@ -11,7 +11,7 @@ public class PlayerJumping : FallingObject
     private bool _jumpBufferTimerStarted;
 
     protected override void FallVelocityUpdate() {
-        _fallVelocity = _groundedController.IsGrounded && _jumpReady ? 0f : _fallVelocity - _gravity; }
+        _fallVelocity = _groundedController.IsGrounded && _jumpReady ? 0f : _fallVelocity - _gravity * Time.deltaTime; }
 
     private void JumpUpdate() {
         if (Input.GetKeyDown(KeyCode.Space) && _jumpReady) { if (_groundedController.IsGrounded) Jump();

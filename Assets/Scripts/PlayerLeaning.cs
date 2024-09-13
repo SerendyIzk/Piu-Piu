@@ -6,6 +6,7 @@ public class PlayerLeaning : MonoBehaviour
 {
     [SerializeField] private float _nullifyingLeanAngle;
     [SerializeField] private float _leanAngle;
+    public float LeanAngle { get { return _leanAngle; } }
     [SerializeField] private float _leanSpeed;
     private bool _leanedOnLeft;
     private bool _angleNormalizing;

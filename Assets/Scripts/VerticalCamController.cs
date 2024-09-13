@@ -11,7 +11,7 @@ public class VerticalCamController : MonoBehaviour
         _vertAxis = Input.GetAxis("Mouse Y"); }
 
     private void CamMovementUpdate() {
-        transform.localEulerAngles += new Vector3(-_vertAxis * _verticalSensivity, 0f, 0f); }
+        transform.localEulerAngles += new Vector3(-_vertAxis * _verticalSensivity * Time.deltaTime, 0f, 0f); }
 
     private void Update() {
         AxisUpdate();

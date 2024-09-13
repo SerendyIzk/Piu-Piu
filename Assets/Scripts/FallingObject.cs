@@ -9,7 +9,7 @@ public class FallingObject : MonoBehaviour
     protected float _fallVelocity;
 
     protected virtual void FallVelocityUpdate() {
-        _fallVelocity = _groundedController.IsGrounded ? 0f : _fallVelocity - _gravity; }
+        _fallVelocity = _groundedController.IsGrounded ? 0f : _fallVelocity - _gravity * Time.deltaTime; }
 
     private void FallingFixedUpdate() { 
         transform.position -= Vector3.down * _fallVelocity * Time.fixedDeltaTime; }

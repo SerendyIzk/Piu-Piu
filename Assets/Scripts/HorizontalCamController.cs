@@ -11,7 +11,7 @@ public class HorizontalCamController : MonoBehaviour
         _horAxis = Input.GetAxis("Mouse X"); }
 
     private void CamMovementUpdate() {
-        transform.localEulerAngles += new Vector3(0f, _horAxis * _horizontalSensivity, 0f); }
+        transform.localEulerAngles += new Vector3(0f, _horAxis * _horizontalSensivity * Time.deltaTime, 0f); }
 
     private void Update() {
         AxisUpdate();

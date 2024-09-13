@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) { _moveVector += transform.right; _pressedMoveButton = true; PressedRightButton = true; } }
 
     private void Acceleration() {
-        Speed = _pressedMoveButton ? Mathf.Clamp(Speed + _acceleration, 0, _maxSpeed) : 0f; }
+        Speed = _pressedMoveButton ? Mathf.Clamp(Speed + _acceleration * Time.deltaTime, 0, _maxSpeed) : 0f; }
 
     private void HorizontalMovementFixedUpdate() {
         transform.position += _moveVector * Speed * Time.fixedDeltaTime; }
